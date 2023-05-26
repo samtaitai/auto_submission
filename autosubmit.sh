@@ -13,7 +13,7 @@ echo $(pwd)
 if [ -e $copydirname ]; then
 	echo "Do you want to delete ${copydirname}? y:yes"
 	read answer
-	if [ answer == y ]; then
+	if [ $answer == y ]; then
 		rm -rf $copydirname
 		echo "Dir ${copydirname} deleted."
 	else
