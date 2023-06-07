@@ -18,7 +18,7 @@ if [ -e $copydirname/$week ]; then
 	read answer
 	if [ $answer == y ]; then
 		rm -rf $copydirname/$week
-		cp -r /home/slee550/$copydirname/$week $copydirname
+		cp -r /home/slee550/$dirname/$week $copydirname
 		echo "${copydirname}/${week} copied."
 	else
 		echo Ready to submit
@@ -31,7 +31,7 @@ if [ -e $copydirname/$week ]; then
 	fi
 else
 	echo "Dir ${copydirname}/${week} does not exist. Create it."
-	cp -r "$dirname/$week" $copydirname
+	cp -r $dirname/$week $copydirname
 	echo "Dir ${copydirname}/${week} is copied."
 	echo Enter project name ex:w1p1
 	read prgname
