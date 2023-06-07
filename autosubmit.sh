@@ -10,15 +10,18 @@ echo "git pull ${dirname}"
 cd ..
 echo $(pwd)
 
-if [ -e $copydirname ]; then
-	echo "Do you want to delete ${copydirname}? y:yes"
+echo "Which week do you work on? ex:WS01"
+read week
+
+if [ -e $copydirname/$week ]; then
+	echo "Do you want to delete and recopy ${week} dir?"
 	read answer
 	if [ $answer == y ]; then
-		rm -rf $copydirname
-		echo "Dir ${copydirname} deleted."
+		rm -rf $copydirname/$week
+		cp -r /home/slee550/$copydirname/$week $copydirname
+		echo "${copydirname}/${week} copied."
 	else
-		echo Enter week number ex:WS01
-		read week
+		echo Ready to submit
 		echo Enter project name ex:w1p1
 		read prgname
 		cd /home/slee550/$copydirname/$week/$prgname
@@ -27,11 +30,9 @@ if [ -e $copydirname ]; then
 		~hong.huang/submit 345_$partname
 	fi
 else
-	echo "Dir ${copydirname} does not exist. Create it."
-	cp -r "$dirname" $copydirname
-	echo "Dir ${copydirname} is copied."
-	echo Enter week number ex:WS01
-	read week
+	echo "Dir ${copydirname}/${week} does not exist. Create it."
+	cp -r "$dirname/$week" $copydirname
+	echo "Dir ${copydirname}/${week} is copied."
 	echo Enter project name ex:w1p1
 	read prgname
 	cd /home/slee550/$copydirname/$week/$prgname
